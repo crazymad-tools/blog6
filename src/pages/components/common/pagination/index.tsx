@@ -14,16 +14,13 @@ interface PaginationProps {
 const Pagination: React.FC<PaginationProps> = (props) => {
   const { items, setCurrent, setPageSize, current } = usePagination(
     props.pageSize,
-    props.total
+    props.total,
+    props.current
   );
 
   useEffect(() => {
     props.onChange && props.onChange(current);
   }, [current]);
-
-  useEffect(() => {
-    console.log('props.total', props.total);
-  }, [props.total]);
 
   useEffect(() => {
     if (typeof props.pageSize === "number") {

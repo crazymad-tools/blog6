@@ -9,10 +9,14 @@ type PageItem = {
   };
 };
 
-export default function(_pageSize: number = 10, _total: number = 100) {
+export default function (
+  _pageSize: number = 10,
+  _total: number = 100,
+  _current?: number
+) {
   const [items, setItems] = useState<PageItem[]>([]);
   const [pageSize, setPageSize] = useState(_pageSize);
-  const [current, setCurrent] = useState(1);
+  const [current, setCurrent] = useState(_current ?? 1);
 
   const [showCount, setShowCount] = useState(7);
 
@@ -35,9 +39,9 @@ export default function(_pageSize: number = 10, _total: number = 100) {
         props: {
           onClick: () => {
             setCurrent(Math.max(current - 1, 1));
-          }
-        }
-      }
+          },
+        },
+      },
     ];
 
     let half = Math.floor(showCount / 2);
@@ -52,8 +56,8 @@ export default function(_pageSize: number = 10, _total: number = 100) {
         props: {
           onClick: () => {
             i !== current && setCurrent(i);
-          }
-        }
+          },
+        },
       });
     }
 
@@ -64,8 +68,8 @@ export default function(_pageSize: number = 10, _total: number = 100) {
       props: {
         onClick: () => {
           setCurrent(Math.min(current + 1, pageCount));
-        }
-      }
+        },
+      },
     });
     setItems(items);
   }
@@ -76,6 +80,6 @@ export default function(_pageSize: number = 10, _total: number = 100) {
     setPageSize,
     setCurrent,
     current,
-    pageSize
+    pageSize,
   };
 }

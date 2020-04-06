@@ -5,21 +5,12 @@ import "./index.scss";
 import useStores from "../../store";
 import history from "../../history";
 import Pagination from "../components/common/pagination";
-import { withRouter, RouteComponentProps } from "react-router-dom";
+import { RouteComponentProps } from "react-router-dom";
 
 interface Props extends RouteComponentProps<any> {}
 
 const CatalogPage: React.FC<Props> = (props) => {
   const { catalogStore } = useStores();
-
-  useEffect(() => {
-    const { page } = props.match.params;
-    // catalogStore.getCatalog(parseInt(page));
-  }, []);
-
-  useEffect(() => {
-    console.log("catalog has change");
-  }, [catalogStore]);
 
   return (
     <div id="catalogPage" className="page">
@@ -45,6 +36,7 @@ const CatalogPage: React.FC<Props> = (props) => {
       <Pagination
         total={catalogStore.count || 100}
         pageSize={catalogStore.perPage}
+        current={parseInt(props.match.params.page)}
         onChange={(e) => {
           catalogStore.getCatalog(e);
           history.push(`/catalog/${e}`);
@@ -64,4 +56,3 @@ const CatalogPage: React.FC<Props> = (props) => {
 };
 
 export default observer(CatalogPage);
-
