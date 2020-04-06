@@ -1,0 +1,59 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #f9f9f9;
+  font-family: Didot, "Didot LT STD", "Hoefler Text", Garamond,
+    "Times New Roman", serif;
+}
+
+#root {
+  height: 100%;
+}
+.App {
+  height: 100%;
+  box-sizing: border-box;
+  nav {
+    height: 40px;
+    line-height: 40px;
+    .link {
+      margin: 0 10px;
+    }
+  }
+  main {
+    // border: 1px solid #ccc;
+    position: relative;
+    min-height: calc(100% - 80px);
+    .page {
+      border-radius: 3px;
+      padding: 20px 20px;
+      box-sizing: border-box;
+      background: white;
+    }
+  }
+}
+
+.page {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.line {
+  text-indent: 2em;
+}
+
+.link {
+  color: #1890ff;
+  cursor: pointer;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.markdown-review {
+  p {
+    text-indent: 2em;
+  }
+}

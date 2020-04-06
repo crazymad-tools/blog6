@@ -1,0 +1,17 @@
+#articlePage {
+  .article-header {
+    text-align: center;
+    h2 {
+      margin-bottom: 0;
+    }
+    p {
+      margin-top: 5px;
+      margin-bottom: 30px;
+      color: #666;
+    }
+  }
+  img {
+    max-width: calc(100% - 4em);
+    border: 1px solid #ccc;
+  }
+}
